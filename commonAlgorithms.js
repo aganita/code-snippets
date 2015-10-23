@@ -1,4 +1,4 @@
-// sort numbers 
+//sort array of numbers 
 // By default, the sort() method sorts the values as strings in alphabetical and ascending order. 
 
 var arr = [5, 2, 1, -10, 8];
@@ -63,3 +63,20 @@ for (var j = 2; j < 10; j++) {
 	}
 }
 alert (printPrimeNum);
+
+
+//get a random number within the range  min <= rand <= max
+var rand = min + Math.floor(Math.random() * (max + 1 - min));
+
+
+//check for NaN. two ways
+var n = 0/0;
+isNaN(n); //if returns true then n is NaN or string 
+if (n !== n) alert( 'n = NaN!' ); // in JavaScript only NaN does not equal to itslef 
+
+
+//check dor even number
+function isEven(n) {
+  return !(n % 2);
+}
+
