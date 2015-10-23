@@ -1,3 +1,122 @@
+"use strict";
+
+// fun facts about unary operations
+//a ^ b ^ b === a
+//~n === -(n+1)
+// 3 << 3 === 3 * (2*2*2) === 3 * Math.pow(2, 3);
+
+// check if the variable is integer 
+function isInteger(num) {
+  return (num ^ 0) === num;
+}
+
+// round the number. will literally keep only integer part
+function round(num) {
+  return (num ^ 0);
+  //return ~~num;
+}
+
+
+// fun facts about binary operations 
+alert( true || false || true ); // returns the first true and stops the check 
+alert( true && true ); // returns the last true value
+alert( false && true ); // returns false
+alert( true && false ); //returns false
+alert( false && false ); // returns first false
+
+
+// different function types 
+
+
+sum(3, 5); //right
+// Function Declaration
+function sum(a, b) {
+  return a + b;
+}
+
+
+sum2 (2, 6); //wrong
+// Function Expression
+var sum2 = function(a, b) {
+  return a + b;
+}
+
+
+//Named Function Expression
+var f = function factorial(n) {
+  return n ? n*factorial(n-1) : 1;
+};
+
+var g = f;  // copied link to the function to g
+f = null;
+
+alert( g(5) ); // returs 120
+
+
+//functions as parameters, anonymous functions 
+function ask(question, yes, no) {
+    if (confirm(question)) yes()
+    else no();
+  }
+
+function showOk() {
+  alert( "Agreed" );
+}
+
+function showCancel() {
+  alert( "Disagreed" );
+}
+
+// использование
+ask("Do you agree?", showOk, showCancel);
+
+// the shorter way of the same function 
+ask(
+  "Do you agree?",
+  function() { alert("Agreed"); }, // anonymous function 
+  function() { alert("Disagreed"); }
+);
+
+var newFunct = new Function('a,b', ' return a+b; '); // Function(params, code):
+
+var result = sum(1, 2);
+alert( result ); // 3
+
+
+
+
+
+
+
+
+
+//get a random number within the range  min <= rand <= max
+var rand = min + Math.floor(Math.random() * (max + 1 - min));
+
+
+//check for NaN. two ways
+var n = 0/0;
+isNaN(n); //if returns true then n is NaN or string 
+if (n !== n) alert( 'n = NaN!' ); // in JavaScript only NaN does not equal to itslef 
+
+
+//check for even number
+function isEven(n) {
+  return !(n % 2);
+}
+
+//check if the variable is integer 
+function isInteger(num) {
+  return (num ^ 0) === num;
+}
+
+//round the number. Will literally cut the decimals 
+function round(num) {
+  return (num ^ 0);
+  //return ~~num;
+}
+
+
 //sort array of numbers 
 // By default, the sort() method sorts the values as strings in alphabetical and ascending order. 
 
@@ -65,18 +184,5 @@ for (var j = 2; j < 10; j++) {
 alert (printPrimeNum);
 
 
-//get a random number within the range  min <= rand <= max
-var rand = min + Math.floor(Math.random() * (max + 1 - min));
 
-
-//check for NaN. two ways
-var n = 0/0;
-isNaN(n); //if returns true then n is NaN or string 
-if (n !== n) alert( 'n = NaN!' ); // in JavaScript only NaN does not equal to itslef 
-
-
-//check dor even number
-function isEven(n) {
-  return !(n % 2);
-}
 
