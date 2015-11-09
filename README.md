@@ -1,2 +1,2 @@
 # JavaScript-snippets
-Collection of cool JavaScript code examples for efficient and elegant coding 
+Collection of my favorite code snippets and algorithms that make JavaScript fun 
