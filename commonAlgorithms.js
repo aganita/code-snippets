@@ -205,54 +205,28 @@ alert( arr ); // [3, 1]
 
 
 
-// create a list class in JavaScript
 
-var list = {
-  value: 1,
-  next: {
-    value: 2,
-    next: {
-      value: 3,
-      next: {
-        value: 4,
-        next: null
-      }
-    }
-  }
-};
+// remove anagrams from an array 
+function aclean(arr) {
+  // этот объект будем использовать для уникальности
+  var obj = {};
 
-function printList(list) {
-  var tmp = list;
+  for (var i = 0; i < arr.length; i++) {
+    // split the sting to letters, sort, then concatinate back
+    var sorted = arr[i].toLowerCase().split('').sort().join(''); 
 
-  while (tmp) {
-    alert( tmp.value );
-    tmp = tmp.next;
+    // save only objects with unique key
+    obj[sorted] = arr[i]; 
   }
 
+  var result = [];
+
+  // now in obj we have only one value for each key 
+  for (var key in obj) result.push(obj[key]);
+
+  return result;
 }
 
-// 
-function printReverseList(list) {
-  var arr = [];
-  var tmp = list;
+var arr = ["ani", "play", "ina", "dog", "GOD", "night"];
 
-  while (tmp) {
-    arr.push(tmp.value);
-    tmp = tmp.next;
-  }
-
-  for (var i = arr.length - 1; i >= 0; i--) {
-    alert( arr[i] );
-  }
-}
-
-// recursion
-function printReverseListRec(list) {
-
-  if (list.next) {
-    printReverseList(list.next);
-  }
-
-  alert( list.value );
-}
-
+alert( aclean(arr) );
