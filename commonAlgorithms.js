@@ -25,67 +25,6 @@ alert( true && false ); //returns false
 alert( false && false ); // returns first false
 
 
-// different function types 
-
-
-sum(3, 5); //right
-// Function Declaration
-function sum(a, b) {
-  return a + b;
-}
-
-
-sum2 (2, 6); //wrong
-// Function Expression
-var sum2 = function(a, b) {
-  return a + b;
-}
-
-
-//Named Function Expression
-var f = function factorial(n) {
-  return n ? n*factorial(n-1) : 1;
-};
-
-var g = f;  // copied link to the function to g
-f = null;
-
-alert( g(5) ); // returs 120
-
-
-//functions as parameters, anonymous functions 
-function ask(question, yes, no) {
-    if (confirm(question)) yes()
-    else no();
-  }
-
-function showOk() {
-  alert( "Agreed" );
-}
-
-function showCancel() {
-  alert( "Disagreed" );
-}
-
-// использование
-ask("Do you agree?", showOk, showCancel);
-
-// the shorter way of the same function 
-ask(
-  "Do you agree?",
-  function() { alert("Agreed"); }, // anonymous function 
-  function() { alert("Disagreed"); }
-);
-
-var newFunct = new Function('a,b', ' return a+b; '); // Function(params, code):
-
-var result = sum(1, 2);
-alert( result ); // 3
-
-
-
-
-
 
 
 
