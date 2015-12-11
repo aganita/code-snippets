@@ -30,22 +30,22 @@ alert( false && false ); // returns first false
 // Using binary operations for user roles ---- IMORTANT JavaScript can work only with 32 bit numbers. 
 
 var ACCESS_ADMIN = 1;          // 00001
-var ACCESS_GOODS_EDIT = 2;   // 00010
-var ACCESS_GOODS_VIEW = 4;     // 00100
+var ACCESS_COMMENTS_EDIT = 2;   // 00010
+var ACCESS_COMMENTS_VIEW = 4;     // 00100
 var ACCESS_ARTICLE_EDIT = 8; // 01000
 var ACCESS_ARTICLE_VIEW = 16;  // 10000
 
-var guest = ACCESS_ARTICLE_VIEW | ACCESS_GOODS_VIEW; // 10100
-var editor = guest | ACCESS_ARTICLE_EDIT | ACCESS_GOODS_EDIT; // 11110
-var admin = editor | ACCESS_ADMIN; // 11111
+var guest = ACCESS_ARTICLE_VIEW | ACCESS_COMMENTS_VIEW; // 10100
+var moderator = guest | ACCESS_ARTICLE_EDIT | ACCESS_COMMENTS_EDIT; // 11110
+var admin = moderator | ACCESS_ADMIN; // 11111
 
 
-alert(editor & ACCESS_ADMIN); // 0, decline access
-alert(editor & ACCESS_ARTICLE_EDIT); // 8, allow access 
+alert(moderator & ACCESS_ADMIN); // 0, decline access
+alert(moderator & ACCESS_ARTICLE_EDIT); // 8, allow access 
 
-var check = ACCESS_GOODS_VIEW | ACCESS_GOODS_EDIT; // 6, 00110
+var check = ACCESS_COMMENTS_VIEW | ACCESS_COMMENTS_EDIT; // 6, 00110
 
-alert( admin & check ); // not 0, the use can view OR edit the goods
+alert( admin & check ); // not 0, the use can view OR edit the comments
 
-// find users that have access to edit goods or have admin access
-findUsers(ACCESS_GOODS_EDIT | ACCESS_ADMIN);
+// find users that have access to edit cmments or have admin access
+findUsers(ACCESS_COMMENTS_EDIT | ACCESS_ADMIN);
