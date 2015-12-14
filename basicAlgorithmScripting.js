@@ -6,15 +6,15 @@ function reverseString1(str) {
 }
 
 function reverseString2(s) {
-var o = "";
-for (var i = s.length - 1; i >= 0; i--)
-o += s[i];
-return o;
+  var o = "";
+  for (var i = s.length - 1; i >= 0; i--)
+    o += s[i];
+  return o;
 }
 
 function reverseString3(s) {
-for (var i = s.length - 1, o = ''; i >= 0; o += s[i--]) { }
-return o;
+  for (var i = s.length - 1, o = ''; i >= 0; o += s[i--]) { }
+    return o;
 }
 // more examples on reverese string: http://eddmann.com/posts/ten-ways-to-reverse-a-string-in-javascript/
 
@@ -38,10 +38,10 @@ function palindrome1(str) {
 function palindrome2(str) {
   // remove all non-alpha-numeric characters and make the string non case sensetive 
   var strArray = str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase().split("");
-    
+  
   // loop through the array and check if the first element equals the last element and so on
   for (var i = 0; i < strArray.length/2; i++) {
-      if (strArray[i] != strArray[strArray.length - 1 - i])
+    if (strArray[i] != strArray[strArray.length - 1 - i])
       return false;
   } 
   return true;
@@ -51,16 +51,16 @@ function palindrome2(str) {
 // LENGTH OF THE LONGEST WORD IN A STRING
 
 function findLongestWord(str) {
-    var resultLength = 0;
-    var stringArray = str.split(" ");
-    
-    for (var i = 0; i < stringArray.length; i++) {
-        console.log(stringArray[i]);
-        if (stringArray[i].length > resultLength) {
-            resultLength = stringArray[i].length;
-        }
+  var resultLength = 0;
+  var stringArray = str.split(" ");
+  
+  for (var i = 0; i < stringArray.length; i++) {
+    console.log(stringArray[i]);
+    if (stringArray[i].length > resultLength) {
+      resultLength = stringArray[i].length;
     }
-    return resultLength;
+  }
+  return resultLength;
 }
 
 
