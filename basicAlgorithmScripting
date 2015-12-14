@@ -16,7 +16,7 @@ function reverseString3(s) {
 for (var i = s.length - 1, o = ''; i >= 0; o += s[i--]) { }
 return o;
 }
-
+// more examples on reverese string: http://eddmann.com/posts/ten-ways-to-reverse-a-string-in-javascript/
 
 
 
