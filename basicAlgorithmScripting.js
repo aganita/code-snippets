@@ -81,7 +81,6 @@ function titleCase(str) {
 //Return an array consisting of the largest number from each provided sub-array. 
 function compare(a,b) { return b-a;}
 function largestOfFour(arr) {
-  // You can do this!
   var resultArray = [ ];
   for (var i = 0; i < arr.length; i++) {
     console.log(arr[i].sort(compare));
