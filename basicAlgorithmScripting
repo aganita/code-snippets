@@ -19,6 +19,15 @@ return o;
 // more examples on reverese string: http://eddmann.com/posts/ten-ways-to-reverse-a-string-in-javascript/
 
 
+// FACTORIALIZE USING RECURSION
+
+function factorialize(num) {
+  if (num == 1 || num == 0)
+    return 1;
+  else return num * factorialize(num-1);
+}
+
+
 
 
 function compare(a,b) { return b-a;}
