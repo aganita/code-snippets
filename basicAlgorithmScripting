@@ -30,9 +30,22 @@ function factorialize(num) {
 // CHECK FOR PALINDROMES
 //A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing
 
-function palindrome(str) {
+function palindrome1(str) {
   return (str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() === str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase().split("").reverse().join("")) ;
 }
+
+function palindrome2(str) {
+  // remove all non-alpha-numeric characters and make the string non case sensetive 
+  var strArray = str.replace(/[^a-zA-Z0-9]/g, "").toLowerCase().split("");
+    
+  // loop through the array and check if the first element equals the last element and so on
+  for (var i = 0; i < strArray.length/2; i++) {
+      if (strArray[i] != strArray[strArray.length - 1 - i])
+      return false;
+  } 
+  return true;
+}
+
 
 
 
