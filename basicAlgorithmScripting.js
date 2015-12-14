@@ -27,6 +27,7 @@ function factorialize(num) {
   else return num * factorialize(num-1);
 }
 
+
 // CHECK FOR PALINDROMES
 //A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring punctuation, case, and spacing
 
@@ -47,6 +48,20 @@ function palindrome2(str) {
 }
 
 
+// LENGTH OF THE LONGEST WORD IN A STRING
+
+function findLongestWord(str) {
+    var resultLength = 0;
+    var stringArray = str.split(" ");
+    
+    for (var i = 0; i < stringArray.length; i++) {
+        console.log(stringArray[i]);
+        if (stringArray[i].length > resultLength) {
+            resultLength = stringArray[i].length;
+        }
+    }
+    return resultLength;
+}
 
 
 function compare(a,b) { return b-a;}
@@ -64,19 +79,4 @@ function largestOfFour(arr) {
 largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
 
 
-// Find the Longest Word in a String. Return the length
-function findLongestWord(str) {
-    var resultLength = 0;
-    var stringArray = str.split(" ");
-    
-    for (var i = 0; i < stringArray.length; i++) {
-        console.log(stringArray[i]);
-        if (stringArray[i].length > resultLength) {
-            resultLength = stringArray[i].length;
-        }
-    }
-    return resultLength;
-}
-
-findLongestWord("The quick brown fox jumped over the lazy dog");
 
