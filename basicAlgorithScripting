@@ -1,3 +1,13 @@
+// reverse a string
+
+function reverseString(str) {
+  var result = str.split("").reverse().join("");
+  return result;
+}
+
+reverseString("hello");
+
+
 
 function compare(a,b) { return b-a;}
 function largestOfFour(arr) {
