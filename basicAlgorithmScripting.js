@@ -95,9 +95,17 @@ largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 85
 
 // CONFIRM THE ENDING 
 // Check if a string (first argument) ends with the given target string (second argument).
-
 function end(str, target) {
     return (str.slice(-target.length) === target);
+}
+
+
+//REPEAT A STRING
+//Repeat a given string (first argument) n times (second argument). 
+//Return an empty string if n is a negative number.
+function repeat(str, num) {
+    if (num < 0) return "";
+    return str.repeat(num);
 }
 
 
