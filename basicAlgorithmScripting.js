@@ -79,4 +79,17 @@ function largestOfFour(arr) {
 largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
 
 
+// TITLE CASE A SENTENCE
+// Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.
+function titleCase(str) {
+    var strArray = str.toLowerCase().split(" ");
+    
+    for (var i = 0; i < strArray.length; i++) {
+        strArray[i] = strArray[i].charAt(0).toUpperCase() + strArray[i].slice(1);
+    }
+    
+    return strArray.join(" ");
+}
+
+
 
