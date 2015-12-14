@@ -1,11 +1,23 @@
-// reverse a string
+// REVERSE STRING
 
-function reverseString(str) {
+function reverseString1(str) {
   var result = str.split("").reverse().join("");
   return result;
 }
 
-reverseString("hello");
+function reverseString2(s) {
+var o = "";
+for (var i = s.length - 1; i >= 0; i--)
+o += s[i];
+return o;
+}
+
+function reverseString3(s) {
+for (var i = s.length - 1, o = ''; i >= 0; o += s[i--]) { }
+return o;
+}
+
+
 
 
 
