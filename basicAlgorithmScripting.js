@@ -123,3 +123,14 @@ function chunk(arr, size) {
 }
 
 
+//SLASHER FLICK
+//Return the remaining elements of an array 
+//after chopping off n elements from the head.
+function slasher(arr, howMany) {
+  if (arr.length < howMany) return [];    
+  var resultArray = [];
+  resultArray = arr.slice(-(arr.length - howMany));
+  return resultArray;
+}
+
+
