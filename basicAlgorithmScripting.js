@@ -134,3 +134,17 @@ function slasher(arr, howMany) {
 }
 
 
+//MUTATIONS
+//Return true if the string in the first element of the array contains 
+//all of the letters of the string in the second element of the array.
+function mutation(arr) {
+  var mainStr = arr[0].toLowerCase().split("");
+  var subStr = arr[1].toLowerCase().split("");
+  
+  for (var i = 0; i < subStr.length; i++) {
+      if (mainStr.indexOf(subStr[i]) < 0)
+      return false;
+  }
+  return true;
+}
+
