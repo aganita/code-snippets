@@ -152,7 +152,10 @@ function mutation(arr) {
 //FALSY BOUNCER
 //Remove all falsy values from an array.
 //Falsy values in javascript are false, null, 0, "", undefined, and NaN.
-function filterFalsy (a) {
+
+function bouncer(arr) {
+  
+  function filterFalsy (a) {
     if (a!==a) return false; //check if NaN. in JavaScript only NaN does not equal to NaN
     switch (a) {
         case false:
@@ -169,9 +172,16 @@ function filterFalsy (a) {
     return true;
 }
 
-function bouncer(arr) {
-    console.log (arr.filter(filterFalsy));
     return arr.filter(filterFalsy);
+}
+
+function bouncer(arr) {
+  function isTruthy(arg) {
+    return Boolean(arg);
+  }
+  
+  var filteredArray = arr.filter(isTruthy);
+  return filteredArray;
 }
 
 // SEEK AND DESTROY
