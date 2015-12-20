@@ -198,3 +198,22 @@ function destroyer(arr) {
   });
 }
 
+// WHERE DO I BELONG
+//Return the lowest index at which a value (second argument) 
+//should be inserted into an array (first argument) once it has been sorted
+
+function where(arr, num) {
+    function sortArray( a, b) {
+        return a - b;
+    }
+    arr.sort(sortArray);
+    
+    for (var i = 0 ; i < arr.length; i++) {
+        console.log (num + " " + arr[i] + " i=" + i);
+        if (num <= arr[i]) return i ;
+    }
+    
+    return arr.length;
+}
+
+where([10, 20, 30, 40, 50], 35)
