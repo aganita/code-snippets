@@ -14,22 +14,36 @@ sumAll([5, 10]);
 //DIFF TWO ARRAYS
 //Compare two arrays and return a new array with 
 //any items only found in one of the original arrays.
+// first solution
 function diff(arr1, arr2) {
   var newArr = [];
   
   for (var i = 0; i < arr1.length; i++) {
-    if (arr2.indexOf(arr1[i]) < 0){
+    if (arr2.indexOf(arr1[i]) === -1){
       newArr.push(arr1[i]);
     } 
   }
 
   for (var j = 0; j < arr2.length; j++) {
-    if (arr1.indexOf(arr2[j]) < 0){
+    if (arr1.indexOf(arr2[j]) === -1){
       newArr.push(arr2[j]);
     } 
   }
   
   return newArr;
+}
+
+// second solution
+function diff(arr1, arr2) {
+  var newArr = arr1.concat(arr2);
+
+  function check(item) {
+    if (arr1.indexOf(item) === -1 || arr2.indexOf(item) === -1) {
+      return item;
+    }
+  }
+
+  return newArr.filter(check);
 }
 
 diff([1, 2, 3, 5], [1, 2, 3, 4, 5]);
