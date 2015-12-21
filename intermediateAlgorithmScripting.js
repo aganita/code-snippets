@@ -17,15 +17,17 @@ sumAll([5, 10]);
 // first solution - runs about two times faster than second solution
 function diff(arr1, arr2) {
   var newArr = [];
-  
+  // looping through arr1 to detect if element of arr1 exists in arr2
   for (var i = 0; i < arr1.length; i++) {
     if (arr2.indexOf(arr1[i]) === -1){
+      // pushing every unique to arr1 element to newArr
       newArr.push(arr1[i]);
     } 
   }
-
+  // looping through arr2 to detect if element of arr2 exists in arr1
   for (var j = 0; j < arr2.length; j++) {
     if (arr1.indexOf(arr2[j]) === -1){
+      // pushing every unique to arr2 element to newArr      
       newArr.push(arr2[j]);
     } 
   }
@@ -33,7 +35,7 @@ function diff(arr1, arr2) {
   return newArr;
 }
 
-// second solution - runs aabout two times slower than second solution
+// second solution 
 function diff(arr1, arr2) {
   var newArr = arr1.concat(arr2);
 
