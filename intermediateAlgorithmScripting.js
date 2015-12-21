@@ -53,26 +53,27 @@ diff(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["dior
 //ROMAN NUMERAL CONVERTER
 //Convert the given number into a roman numeral.
 //All roman numerals answers should be provided in upper-case.
-
 var convert = function(num) {
 
   // Create arrays with default conversion with matching indices
   var decimalNumArray = [ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 ];
   var romanNumArray = [ 'M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I' ];
-  var romanNumber = "";
+  var resultRomanNumber = [];
 
   // Loop through the indices of the decimalNumArray array
   for (var index = 0; index < decimalNumArray.length; index++) {
     // Build the roman numerial while the decimal vaue from decimalNumArray is smaller or equal num
     while (decimalNumArray[index] <= num) {
-      // Add the roman numeral 
-      romanNumber += romanNumArray[index];
+      // Add the roman numeral to the romanNumber array
+      resultRomanNumber.push(romanNumArray[index]);
       // Decrease num by the decimal equivalent
       num -= decimalNumArray[index];
     }
   }
 
-  return romanNumber;
+// String concatenation is slower and causes major performance problems in older versions of IE. Manipulating array is more efficient
+// Therefore it is highly recommended to use .push then use join("") to return a string instead of array
+  return resultRomanNumber.join("");
 };
 
 convert(36);
