@@ -14,7 +14,7 @@ sumAll([5, 10]);
 //DIFF TWO ARRAYS
 //Compare two arrays and return a new array with 
 //any items only found in one of the original arrays.
-// first solution
+// first solution - runs about two times faster than second solution
 function diff(arr1, arr2) {
   var newArr = [];
   
@@ -33,7 +33,7 @@ function diff(arr1, arr2) {
   return newArr;
 }
 
-// second solution
+// second solution - runs aabout two times slower than second solution
 function diff(arr1, arr2) {
   var newArr = arr1.concat(arr2);
 
