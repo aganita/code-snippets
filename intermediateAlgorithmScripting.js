@@ -62,7 +62,7 @@ var convert = function(num) {
 
   // Loop through the indices of the decimalNumArray array
   for (var index = 0; index < decimalNumArray.length; index++) {
-    // Build the roman numerial while the decimal vaue from decimalNumArray is smaller or equal num
+    // Build the roman numeral while the decimal value from decimalNumArray is smaller or equal num
     while (decimalNumArray[index] <= num) {
       // Add the roman numeral to the romanNumber array
       resultRomanNumber.push(romanNumArray[index]);
