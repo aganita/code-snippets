@@ -50,4 +50,29 @@ diff([1, 2, 3, 5], [1, 2, 3, 4, 5]);
 diff(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], ["diorite", "andesite", "grass", "dirt", "dead shrub"]);
 
 
+//ROMAN NUMERAL CONVERTER
+//Convert the given number into a roman numeral.
+//All roman numerals answers should be provided in upper-case.
 
+var convert = function(num) {
+
+  // Create arrays with default conversion with matching indices
+  var decimalNumArray = [ 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 ];
+  var romanNumArray = [ 'M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I' ];
+  var romanNumber = "";
+
+  // Loop through the indices of the decimalNumArray array
+  for (var index = 0; index < decimalNumArray.length; index++) {
+    // Build the roman numerial while the decimal vaue from decimalNumArray is smaller or equal num
+    while (decimalNumArray[index] <= num) {
+      // Add the roman numeral 
+      romanNumber += romanNumArray[index];
+      // Decrease num by the decimal equivalent
+      num -= decimalNumArray[index];
+    }
+  }
+
+  return romanNumber;
+};
+
+convert(36);
