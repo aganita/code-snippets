@@ -73,8 +73,9 @@ var convert = function(num) {
     }
   }
 
-// String concatenation is slower and causes major performance problems in older versions of IE. Manipulating array is more efficient
-// Therefore it is highly recommended to use .push then use join("") to return a string instead of array
+// String concatenation is slower and causes major performance problems in older versions of IE. 
+// Manipulating array is more efficient
+// It is highly recommended to use .push then use join("") to return a string
   return resultRomanNumber.join("");
 };
 
