@@ -1,4 +1,5 @@
-// in this example I am testing which of the two reverse functions works faster
+// benchmarking. 
+// Testing the performance of two versions of reverse function
 
 var s = "123456789";
 
