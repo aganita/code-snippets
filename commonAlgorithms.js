@@ -169,3 +169,30 @@ function aclean(arr) {
 var arr = ["ani", "play", "ina", "dog", "GOD", "night"];
 
 alert( aclean(arr) );
+
+
+
+///// USE MAP with callback///////////// 
+var arr = ["Hello", "world!!!"];
+// get the legths of array elements 
+function getLength(arr){
+    var arrLength = [];
+    for (var i = 0; i < arr.length; i++) {
+        arrLength[i] = arr[i].length;
+    }
+    return arrLength;
+}
+console.log("array of item lengths " + getLength(arr)); // 5, 8
+
+// get the legths of array elements using map 
+function getLengthUseMap(arr){
+    return arr.map(function(item){
+        return item.length;
+    });
+}
+console.log ("array of item lengths " + getLengthUseMap(arr));  // 5, 8
+
+//////////////////////////////////
+
+
+
