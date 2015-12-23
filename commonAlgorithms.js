@@ -195,4 +195,22 @@ console.log ("array of item lengths " + getLengthUseMap(arr));  // 5, 8
 //////////////////////////////////
 
 
+/// ELEGANT WAY TO USE REDUCE//////////////////////////
+// need to get array of partial sums like getPartialSums( [1,2,3,4,5] ) = [ 1, 1+2, 1+2+3, 1+2+3+4, 1+2+3+4+5 ] = [ 1, 3, 6, 10, 15 ]
+var arr = [1,2,3,4,5];
+
+function getPartialSums(arr){
+    var resArr =[];
+    arr.reduce(function(sum, current){
+       resArr.push(sum + current);
+       return sum + current;
+    }, 0);
+    return resArr;
+}
+
+console.log(getPartialSums(arr)); // 1, 3, 6, 10, 15
+
+///////////////////////////////////////////////////////////
+
+
 
