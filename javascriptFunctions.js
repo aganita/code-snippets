@@ -108,3 +108,15 @@ var newFunct = new Function('a,b', ' return a+b; '); // Function(params, code):
 
 var result = newFunct(1, 2);
 alert( result ); // 3
+
+
+
+// new Function 
+
+var a = 1;
+function getFunc() {
+  var a = 2;
+  var func = new Function('', 'alert(a)');
+  return func;
+}
+getFunc()(); // 1
