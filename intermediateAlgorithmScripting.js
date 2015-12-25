@@ -124,12 +124,13 @@ where([{ first: "Romeo", last: "Montague" },
 
 
 function myReplace(str, before, after) {
-    // apply the casing of source parameter to target and return target
-    function applyCasing(source, target) {
+    // match the casing of source parameter to target and return target
+    function matchCasing(source, target) {
         var targetArr = target.split("");
         var sourceArr = source.split("");
        
         for (var i = 0; i < Math.min(targetArr.length, sourceArr.length); i++){
+            // use regular expression to determine if sourseArr[i] is upper case
             if (/[A-Z]/.test(sourceArr[i])) {
                 targetArr[i] = targetArr[i].toUpperCase();
             }
@@ -139,7 +140,7 @@ function myReplace(str, before, after) {
     }
     
     // replace "before" with "after" with "before"-casing 
-    return str.replace(before, applyCasing(before, after));
+    return str.replace(before, matchCasing(before, after));
 }
 
 myReplace("A quick brown fox Jumped over the lazy dog", "Jumped", "leaped");
