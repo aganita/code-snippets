@@ -211,3 +211,51 @@ function pair(str) {
 
 pair("GCkjjGKg");
 
+
+
+// MISSIGN LETTER
+// Find the missing letter in the passed letter range and return it.
+// If all letters are present in the range, return undefined.
+
+function fearNotLetter(str) {
+
+  for(var i = 0; i < str.length; i++) {
+    var code = str.charCodeAt(i);
+
+    if ( code !== str.charCodeAt(0) + i) {
+      return String.fromCharCode(code-1);
+    }  
+  }
+  return undefined;
+}
+fearNotLetter("abce");
+
+
+// MISSIGN LETTERS
+// Find the missing letter sequence in the passed letter range and return the complete version.
+function fearNotLetter(str) {
+    var strArr = str.split("");
+    // sort the array incase the letter sequence is not sorted
+    // if collback is not defined for sort(), 
+    // by default JavaScript will sort items as strings -> by Unicode numbers
+    strArr = strArr.sort();
+    var tmpStr, j;
+    var codeOfCurrentLetter = 0; 
+    var codeOfFirstLetter = strArr[0].charCodeAt(0);
+
+    for (var i = 0; i < strArr.length; i++) {
+        codeOfCurrentLetter = strArr[i].charCodeAt(0);
+        if (codeOfCurrentLetter !== codeOfFirstLetter + i){
+            tmpStr = "";
+            // construct tmpStr of missing letters
+            for (j = codeOfFirstLetter + i; j < codeOfCurrentLetter ; j++){
+                tmpStr += (String.fromCharCode(j));
+            }
+            // insert the tmpStr into the main array as one element
+            strArr.splice(i, 0, tmpStr);
+        }
+    }
+    // return a string out of a new array
+    return strArr.join("");
+}
+fearNotLetter("abcefh");
