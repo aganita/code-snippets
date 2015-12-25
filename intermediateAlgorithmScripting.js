@@ -156,7 +156,7 @@ function translate(str) {
     var strArr = [];
     var tmpChar;
     
-    // using regex check if the char is consonant
+    // check if the char is consonant using regex
     function isConsonant(char) {
         return !/[aeiou]/.test(char);
     }
