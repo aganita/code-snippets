@@ -177,3 +177,37 @@ function translate(str) {
 }
 
 translate("consonant");
+
+
+//DNA PAIRING
+//The DNA strand is missing the pairing element. 
+//Take each character, get its pair, and return the results as a 2d array.
+//Base pairs are a pair of AT and CG. 
+//Match the missing element to the provided character.
+//Return the provided character as the first element in each array.
+//For example, for the input GCG, return [["G", "C"], ["C","G"],["G", "C"]]
+//The character and its pair are paired up in an array, 
+//and all the arrays are grouped into one encapsulating array.
+
+function pair(str) {
+    // convert input string to upper case and split into an array of letters
+    var strArr = str.toUpperCase().split("");    
+    // create an map with DNA key pairs 
+    var dnaPairMap = {
+        A: "T",
+        T: "A",
+        C: "G",
+        G: "C"
+    };
+    var resArr = [];
+    // insert into 2d resArr DNA pairs if key-value exists in the map
+    for (var i = 0; i < strArr.length; i++) {
+        if (dnaPairMap.hasOwnProperty(strArr[i]))
+            resArr[i] = [strArr[i], dnaPairMap[strArr[i]]];
+    }
+    
+ return resArr;
+}
+
+pair("GCkjjGKg");
+
