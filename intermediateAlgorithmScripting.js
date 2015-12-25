@@ -111,3 +111,35 @@ function where(collection, source) {
 where([{ first: "Romeo", last: "Montague" }, 
 { first: "Mercutio", last: null }, 
 { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
+
+
+
+// SEARCH AND REPLACE
+// Perform a search and replace on the sentence using the arguments provided and return the new sentence.
+// First argument is the sentence to perform the search and replace on.
+// Second argument is the word that you will be replacing (before).
+// Third argument is what you will be replacing the second argument with (after).
+// NOTE: Preserve the case of the original word when you are replacing it. 
+// For example if you mean to replace the word "Book" with the word "dog", it should be replaced as "Dog"
+
+
+function myReplace(str, before, after) {
+    // apply the casing of source parameter to target and return target
+    function applyCasing(source, target) {
+        var targetArr = target.split("");
+        var sourceArr = source.split("");
+       
+        for (var i = 0; i < Math.min(targetArr.length, sourceArr.length); i++){
+            if (/[A-Z]/.test(sourceArr[i])) {
+                targetArr[i] = targetArr[i].toUpperCase();
+            }
+            else targetArr[i] = targetArr[i].toLowerCase();
+        } 
+        return (targetArr.join(""));
+    }
+    
+    // replace "before" with "after" with "before"-casing 
+    return str.replace(before, applyCasing(before, after));
+}
+
+myReplace("A quick brown fox Jumped over the lazy dog", "Jumped", "leaped");
