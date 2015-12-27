@@ -347,7 +347,7 @@ function convert(str) {
 //and each subsequent number is the sum of the previous two numbers.
 //As an example, passing 4 to the function should return 5 
 //because all the odd Fibonacci numbers under 4 are 1, 1, and 3.
-
+// solution #1
 function sumFibs(num) {
   
   // create an array of fib numbers till num
@@ -368,4 +368,21 @@ function sumFibs(num) {
 }
 
 sumFibs(4); // 5
+
+// solution #2
+function sumFibs(num) {
+    var prevNumber = 0;
+    var currNumber = 1;
+    var result = 0;
+    while (currNumber <= num) {
+        if (currNumber % 2 !== 0) {
+            result += currNumber;
+        }
+
+        currNumber += prevNumber;
+        prevNumber = currNumber - prevNumber;
+    }
+
+    return result;
+}
 
