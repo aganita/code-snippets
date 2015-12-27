@@ -287,7 +287,6 @@ function unite(arr1, arr2, arr3) {
     // concatenate all items of arguments object into one array
     for (var i = 0; i < arguments.length; i++) {
         argArr = argArr.concat(arguments[i]);
-        console.log(arguments[i]);
     }
     
     // filter out all non unique elements of the array 
