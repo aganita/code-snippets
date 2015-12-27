@@ -319,3 +319,24 @@ function unite(arr1, arr2, arr3) {
 
 unite([1, 3, 2], [5, 2, 1, 4], [2, 1]);  // [ 1, 3, 2, 5, 4 ]
 
+
+// CONVERT HTML ENTITIES
+//Convert the characters 
+//"&", "<", ">", '"' (double quote), and "'" (apostrophe), 
+//in a string to their corresponding HTML entities.
+
+function convert(str) {
+    // create map object for HTML elements
+    var html = {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      "\"":"&quot;",
+      "\'":"&apos;"
+    };
+    
+    return str.replace(/&|<|>|"|'/gi, function(matched){
+            return html[matched];
+        });
+}
+
