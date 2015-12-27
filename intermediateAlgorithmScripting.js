@@ -271,3 +271,52 @@ function boo(bool) {
 
 boo(null);
 
+
+// SORTED UNION 
+//Write a function that takes two or more arrays and returns a new array 
+//of unique values in the order of the original provided arrays.
+//In other words, all values present from all arrays should be included 
+//in their original order, but with no duplicates in the final array.
+//The unique numbers should be sorted by their original order, 
+//but the final array should not be sorted in numerical order.
+//Check the assertion tests for examples.
+
+// Solution #1 - without any specific JavaScript functions 
+function unite(arr1, arr2, arr3) {
+    var argArr = [];
+    // concatenate all items of arguments object into one array
+    for (var i = 0; i < arguments.length; i++) {
+        argArr = argArr.concat(arguments[i]);
+        console.log(arguments[i]);
+    }
+    
+    // filter out all non unique elements of the array 
+    var resArr = [];
+    for (var j = 0; j < argArr.length; j++) {
+        if (resArr.indexOf(argArr[j]) === -1) {
+           resArr.push(argArr[j]);
+        }
+    }
+    
+  return resArr;
+}
+
+// Solution #2 - using filter() and reduce() functions 
+function unite(arr1, arr2, arr3) {
+
+    //Convert the arguments object into an array
+    var args = Array.prototype.slice.call(arguments);
+    
+    //Use reduce function to flatten the array
+    var resArr = args.reduce(function(arrA,arrB){
+        //Apply filter to remove the duplicate elements in the array
+        return arrA.concat(arrB.filter(function(i){
+            return arrA.indexOf(i) === -1;
+            }));
+        });
+
+   return resArr;                    
+}
+
+unite([1, 3, 2], [5, 2, 1, 4], [2, 1]);  // [ 1, 3, 2, 5, 4 ]
+
