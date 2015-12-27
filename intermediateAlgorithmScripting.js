@@ -340,3 +340,32 @@ function convert(str) {
         });
 }
 
+// SUM ALL ODD FIBONACCI NUMBERS
+//Return the sum of all odd Fibonacci numbers up to 
+//and including the passed number if it is a Fibonacci number.
+//The first few numbers of the Fibonacci sequence are 1, 1, 2, 3, 5 and 8, 
+//and each subsequent number is the sum of the previous two numbers.
+//As an example, passing 4 to the function should return 5 
+//because all the odd Fibonacci numbers under 4 are 1, 1, and 3.
+
+function sumFibs(num) {
+  
+  // create an array of fib numbers till num
+  var arrFib = [1];
+  for (var i = 1; i <=num;) {
+      arrFib.push(i);
+      i = arrFib[arrFib.length - 1] + arrFib[arrFib.length - 2];
+  }
+  
+  // return the sum of odd numbers from the array
+  var res = arrFib.reduce(function(prev, curr) { 
+      if (curr%2 !== 0) return prev + curr;
+      else return prev;
+    });
+  
+  
+  return res;
+}
+
+sumFibs(4); // 5
+
