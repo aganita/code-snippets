@@ -386,3 +386,54 @@ function sumFibs(num) {
     return result;
 }
 
+
+
+// SUM ALL PRIMES
+//Sum all the prime numbers up to and including the provided number.
+//A prime number is defined as having only two divisors, 1 and itself. 
+//For example, 2 is a prime number because it's only divisible by 1 and 2. 
+//1 isn't a prime number, because it's only divisible by itself.
+//The provided number may not be a prime.
+
+
+function sumPrimes(num) {
+    
+    // create an array of all prime numbers 
+    function primeNumbers(lastPrime) {
+        // step 1 - create an array of all numbers with true value till lastPrime 
+        var primes = [];
+        for(var i = 2; i <= lastPrime; i++) {
+            primes[i] = true;
+        }
+        
+        // step 2 - find the next available prime number
+        var limit = Math.sqrt(lastPrime);
+        for(i = 2; i < limit; i++) {
+            if(primes[i] === true) {
+                // eliminate all the numbers that are multiples of the chosen prime number 
+                for(var j = i * i; j <= lastPrime; j += i) {
+                    primes[j] = false;
+                }
+            }
+        }
+        // create an array pf prime numbers and return it
+        var resArr = [];
+        for(i = 2; i <= lastPrime; i++) {
+            if(primes[i] === true) {
+                resArr.push(i);
+            }
+        }
+        
+        return resArr;
+    }
+    
+    
+    // get the array of prime numbers 
+    var tmpArr = primeNumbers(num);
+    
+    // return the sum of array
+    return tmpArr.reduce((prev, curr) => prev + curr);
+}
+
+
+sumPrimes(7);
