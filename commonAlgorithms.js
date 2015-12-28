@@ -213,4 +213,13 @@ console.log(getPartialSums(arr)); // 1, 3, 6, 10, 15
 ///////////////////////////////////////////////////////////
 
 
+// find the min angle between two hands of a clock
+var clock = function(hours, minutes) {
+    return Math.abs(30 * (hours-(minutes/5)) + (minutes/2)) ;
+}
+
+clock (9, 30);
+
+
+
 
