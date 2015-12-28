@@ -265,3 +265,76 @@ divisor_match([2, 3], 1, 7);
 // 7
 
 
+
+
+// set up a function counter
+// solution #1
+function makeCounter() {
+  var currentCount = 1;
+
+  return { // возвратим объект вместо функции
+    getNext: function() {
+      return currentCount++;
+    },
+
+    set: function(value) {
+      currentCount = value;
+    },
+
+    reset: function() {
+      currentCount = 1;
+    }
+  };
+}
+
+var counter = makeCounter();
+
+alert( counter.getNext() ); // 1
+alert( counter.getNext() ); // 2
+
+counter.set(5);
+alert( counter.getNext() ); // 5
+
+//solution #2 - preferred 
+function makeCounter() {
+  var currentCount = 1;
+
+  // возвращаемся к функции
+  function counter() {
+      return currentCount++;
+    }
+
+  // ...и добавляем ей методы!
+  counter.set = function(value) {
+    currentCount = value;
+  };
+
+  counter.reset = function() {
+    currentCount = 1;
+  };
+
+  return counter;
+}
+
+var counter = makeCounter();
+
+alert( counter() ); // 1
+alert( counter() ); // 2
+
+counter.set(5);
+alert( counter() ); // 5
+
+
+
+
+
+// get sum
+function sum(a) {
+  return function(b) {
+    return a + b; // возьмет a из внешнего LexicalEnvironment
+  };
+}
+
+alert( sum(1)(2) );
+alert( sum(5)(-1) );
+
