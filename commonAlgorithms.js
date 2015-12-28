@@ -221,5 +221,47 @@ var clock = function(hours, minutes) {
 clock (9, 30);
 
 
+// from GH admission test. Problem 4
+function divisor_match(divisor_array, low, high) {
+    var arr = [];
+    var all_match_counter = 0;
+    
+    var resArr = [];
+    
+    // create and array with all the numbers from low to high 
+    for (var i = low; i<=high; i++) {
+        arr.push(i);
+    } 
+    
+    for (i = 0; i < arr.length; i++ ) {
+        all_match_counter = 0;
+        for (var j = 0; j < divisor_array.length; j++){
+            if (arr[i]%divisor_array[j] === 0) {
+                all_match_counter += 1;
+            }
+        }
+        if (all_match_counter === divisor_array.length) {
+            resArr[i] = (i +1) + " all_match";
+        }
+        else if (all_match_counter > 0) {
+            resArr[i] = (i + 1) + " one_match";
+        }
+        else resArr[i] = (i + 1);
+    }
+    
+    for (i = 0; i < resArr.length; i++ ) {
+        console.log (resArr[i]);
+    }
+}
+
+
+divisor_match([2, 3], 1, 7);
+// 1
+// 2 one_match
+// 3 one_match
+// 4 one_match
+// 5
+// 6 all_match
+// 7
 
 
