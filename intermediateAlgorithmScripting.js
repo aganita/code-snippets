@@ -437,3 +437,50 @@ function sumPrimes(num) {
 
 
 sumPrimes(7);
+
+
+//ARGUMENTS OPTIONAL
+//Create a function that sums two arguments together. 
+//If only one argument is provided, then return a function that expects one argument and returns the sum.
+//For example, add(2, 3) should return 5, and add(2) should return a function.
+//Calling this returned function with a single argument will then return the sum:
+// var sumTwoAnd = add(2);
+// sumTwoAnd(3) returns 5.
+// If either argument isn't a valid number, return undefined.
+
+function add() {
+  var args = new Array(arguments.length);
+  //Storing the arguments in an array
+  for(var i = 0; i < args.length; ++i) {
+      args[i] = arguments[i];
+    }
+ //Check for the arguments length
+ if(args.length == 2){
+    //If there are two arguments,check for the type of both arguments
+    //Use typeof to check the type of the argument(both should be numbers)
+    if(typeof args[0] !== 'number' || typeof args[1] !=='number' ){
+      return undefined;
+      }
+    return args[0]+args[1];
+   }
+ //When only one argument is provided
+ if(args.length == 1){
+     a= args[0];
+     //Check the  argument using typeof 
+    if(typeof a!=='number'){
+        return undefined;
+      }
+    else{
+       //Making use of closures 
+       return function(b){
+       //Checking the second argument 
+         if(typeof b !=='number'){
+           return undefined;
+           }
+         else
+           return a+b;
+          };
+      }
+    }
+}
+add(2,3);
