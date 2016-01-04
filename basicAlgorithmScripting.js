@@ -211,4 +211,45 @@ function where(arr, num) {
   return arr.length;
 }
 
-where([10, 20, 30, 40, 50], 35)
+where([10, 20, 30, 40, 50], 35);
+
+
+// CAESARS CIPHER
+//One of the simplest and most widely known ciphers is a Caesar cipher, 
+//also known as a shift cipher. 
+//In a shift cipher the meanings of the letters are shifted by some set amount.
+//A common modern use is the ROT13 cipher, 
+//where the values of the letters are shifted by 13 places. 
+//Thus 'A' ↔ 'N', 'B' ↔ 'O' and so on.
+
+// this can be done also using the unicode of the letters 
+function rot13(encodedStr) {
+    // Create an array from a given string
+    var codeArr = encodedStr.split("");
+    // Create an array of upper case alphabet
+    var alphArr = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+    // create a function that will check if the give letter is upper case alphabetical
+    function isUpperCaseChar(a) {
+        return (/[A-Z]/.test(a));
+    }
+  
+    var decodedArr = [];
+    
+    // find the shifted letter by adding or substracting the index value of the original letter   
+    for (var i=0; i < codeArr.length; i++ ) {
+        if (isUpperCaseChar(codeArr[i])) {
+            if (alphArr[alphArr.indexOf(codeArr[i]) + 13] !== undefined) {
+                decodedArr[i] = alphArr[alphArr.indexOf(codeArr[i]) + 13];
+            } 
+            else {
+                decodedArr[i] = alphArr[alphArr.indexOf(codeArr[i]) - 13];
+            }
+        }
+        else decodedArr[i] = codeArr[i];
+    }
+    
+    return decodedArr.join("");
+}
+
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
