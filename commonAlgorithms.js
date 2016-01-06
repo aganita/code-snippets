@@ -407,3 +407,17 @@ new Array(1)[0] + "" = "undefined" // (2)
 [] + null + 1 = "null1" // (6)
 [[0]][0][0] = 0 // (7)
 ({} + {}) = "[object Object][object Object]" // (8)
+
+
+
+//// Creating objects using a cinstructor
+
+function Animal(name) {
+  this.name = name;
+  this.canWalk = true;
+}
+var animal = new Animal("rabbit");
+
+// the constructor can be called with or without ()
+var animal = new BigAnimal; //
+var animal = new BigAnimal();
