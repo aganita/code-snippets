@@ -419,5 +419,30 @@ function Animal(name) {
 var animal = new Animal("rabbit");
 
 // the constructor can be called with or without ()
-var animal = new BigAnimal; //
-var animal = new BigAnimal();
+var animal = new Animal; //
+var animal = new Animal();
+
+
+
+// create a calculator constructor
+
+function Calculator(){
+    
+    this.read = function(){
+        this.a = prompt("a = ", 0);
+        this.b = prompt("b = ", 0);
+    };
+    this.sum = function() {
+        return +this.a + +this.b;
+    };
+    this.mul = function () {
+        return this.a * this.b;
+    };
+};
+
+
+var cal = new Calculator();
+cal.read();
+
+console.log("cal.sum" + cal.sum());
+console.log("" + cal.mul());
