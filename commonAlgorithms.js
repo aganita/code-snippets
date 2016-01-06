@@ -340,10 +340,6 @@ alert( sum(5)(-1) );
 
 
 ////// fun facts about objects ////////
-alert( [] == [] ); // false   object equals only to itself, never to another object 
-alert( [] == ![] ); // true   ![] -> false -> 0  [] -> '' -> 0  array object does not have 
-
-
 var obj = {
   go: function() { alert(this) }
 }
@@ -359,6 +355,29 @@ obj.go();            // (1) object
 (obj.go)();          // (2) object
 (method = obj.go)();      // (3) undefined
 (obj.go || obj.stop)(); // (4) undefined
+
+var name = "";
+var user = {
+  name: "Василий",
+  export: this // here "this" points to global element 
+};
+alert( user.export.name ); // will get empty string and with "use strict" - undefined 
+
+
+var name = "";
+var user = {
+  name: "Ani",
+  export: function() {
+    return this;
+  }
+};
+alert( user.export().name ); // will return Ani
+
+
+
+
+alert( [] == [] ); // false   object equals only to itself, never to another object 
+alert( [] == ![] ); // true   ![] -> false -> 0  [] -> '' -> 0  array object does not have 
 
 
 alert(['x'] == 'x'); // true   ['x'] -> 'x'
