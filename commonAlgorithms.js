@@ -338,3 +338,36 @@ function sum(a) {
 alert( sum(1)(2) );
 alert( sum(5)(-1) );
 
+
+////// fun facts about objects ////////
+alert( [] == [] ); // false   object equals only to itself, never to another object 
+alert( [] == ![] ); // true   ![] -> false -> 0  [] -> '' -> 0  array object does not have 
+
+
+var obj = {
+  go: function() { alert(this) }
+}
+(obj.go)()  // error cuz ; is missing after before (obj.go)()
+
+
+"use strict"
+var obj, method;
+obj = {
+  go: function() { alert(this); }
+};
+obj.go();            // (1) object
+(obj.go)();          // (2) object
+(method = obj.go)();      // (3) undefined
+(obj.go || obj.stop)(); // (4) undefined
+
+
+alert(['x'] == 'x'); // true   ['x'] -> 'x'
+
+new Date(0) - 0 //
+new Array(1)[0] + ""
+({})[0] 
+[1] + 1
+[1,2] + [3,4]
+[] + null + 1
+[[0]][0][0]
+({} + {})
