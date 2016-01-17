@@ -614,7 +614,7 @@ function add(b) {
     for (var key in arguments) {
         if (typeof arguments[key] !== "number") return undefined;
     }
-    // return closure function if there is one argument
+    // return closure function if only one argument was passed
     var sum = 0;
     if (arguments.length === 1){
         return function(y) {
@@ -623,7 +623,7 @@ function add(b) {
             return b + y;
         };
     }
-    // return the sum of all arguments if there are more that one arguemtns passed in
+    // return the sum of all arguments if more that one argument was passed in
     else if (arguments.length > 1) {
         for (var i = 0; i < arguments.length; i++){
             sum += arguments[i];
