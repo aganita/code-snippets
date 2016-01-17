@@ -516,3 +516,14 @@ function smallestCommons(arr) {
 smallestCommons([1,5]);
 
 
+// FINDERS KEEPERS
+//Create a function that looks through an array (first argument) 
+//and returns the first element in the array that passes a truth test (second argument).
+
+function find(arr, func) {
+    if (!Array.isArray(arr)) return "First argument is not array";
+    
+    return arr.filter(func)[0];
+}
+
+find([1, 2, 3, 4], function(num){ return num % 2 === 0; });
