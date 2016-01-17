@@ -534,7 +534,7 @@ find([1, 2, 3, 4], function(num){ return num % 2 === 0; });
 //Drop the elements of an array (first argument), 
 //starting from the front, until the predicate (second argument) returns true.
 //Return the rest of the array, otherwise return an empty array.
-
+// solution #1
 function drop(arr, func) {
   if (!Array.isArray(arr)) return "the first argument is not an array";
   if (typeof func !== "function") return "The second argument is not a function";
@@ -544,6 +544,23 @@ function drop(arr, func) {
   
   return arr.slice(indefOfFirstTrueElement);
 }
-
+// solution #2
+function drop(arr, func) {
+  return arr.slice(arr.findIndex(func) >= 0 && arr.findIndex(func), arr.length);
+}
 drop([1, 2, 3, 4], function(n) {return n >= 3;}); //should return [3, 4].
 drop([0, 1, 0, 1], function (){}); //should return [1, 0, 1]
+
+
+
+// STEAMROLLER
+//Flatten a nested array. You must account for varying levels of nesting.
+function steamroller(arr) {
+  return arr.reduce(function (flat, toFlatten) {
+    return flat.concat(Array.isArray(toFlatten) ? steamroller(toFlatten) : toFlatten);
+  }, []);
+}
+
+steamroller([1, [2], [3, [[4]]]]);
+
+
