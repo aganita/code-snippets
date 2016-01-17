@@ -582,7 +582,7 @@ binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 0110
 function every(collection, pre) {
   var bool = true;
   for (var i = 0; i < collection.length; i++){
-     if (!((pre in collection[i]) && collection[i][pre])) bool = false;
+     if (!(collection[i].hasOwnProperty(pre) && Boolean(collection[i][pre]))) bool = false;
   }
   return bool;
 }
