@@ -599,3 +599,38 @@ every([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"},
 every([{"user": "Tinky-Winky", "sex": "male", "age": 0}, {"user": "Dipsy", "sex": "male", "age": 3}, {"user": "Laa-Laa", "sex": "female", "age": 5}, {"user": "Po", "sex": "female", "age": 4}], "age");
 
 
+//Arguments Optional
+//Create a function that sums two arguments together. 
+//If only one argument is provided, then return a function 
+//that expects one argument and returns the sum.
+//For example, add(2, 3) should return 5, and add(2) should return a function.
+//Calling this returned function with a single argument will then return the sum:
+//var sumTwoAnd = add(2);
+//sumTwoAnd(3) returns 5.
+//If either argument isn't a valid number, return undefined.
+
+function add(b) {
+    // check if all passed arguments are numbers 
+    for (var key in arguments) {
+        if (typeof arguments[key] !== "number") return undefined;
+    }
+    // return closure function if there is one argument
+    var sum = 0;
+    if (arguments.length === 1){
+        return function(y) {
+            // check if the argument of closure function is number
+            if (typeof y !== "number") return undefined;
+            return b + y;
+        };
+    }
+    // return the sum of all arguments if there are more that one arguemtns passed in
+    else if (arguments.length > 1) {
+        for (var i = 0; i < arguments.length; i++){
+            sum += arguments[i];
+        }
+        return sum;
+    }
+}
+add(2)([3]);
+var sumTwoAnd = add(2);
+sumTwoAnd(3);
