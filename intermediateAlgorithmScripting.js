@@ -484,3 +484,35 @@ function add() {
     }
 }
 add(2,3);
+
+// SMALLEST COMMON MULTIPLE
+//Find the smallest common multiple of the provided parameters that can be evenly divided by both, 
+//as well as by all sequential numbers in the range between these parameters.
+function smallestCommons(arr) {
+    // create an array of all numbers 
+    var newArr =[];
+    for(i = Math.max(...arr); i >= Math.min(...arr); i--) newArr.push(i);
+    // calculate gcd of two numbers
+    function gcd(a,b){
+        var t = 0, gcd = b;
+        while (a%gcd) {
+           a = a % gcd;
+           t = a;
+           a = gcd;
+           gcd = t;
+        }
+        return gcd;
+    }
+    // calculate lcm of two numbers
+    function lcm(a,b){
+        return a/gcd(a,b) * b;
+    }
+    // calculate lcm of an array
+    return newArr.reduce(function(a,b){
+        return lcm(a,b);
+    });
+    
+}
+smallestCommons([1,5]);
+
+
