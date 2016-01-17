@@ -572,3 +572,23 @@ function binaryAgent(str) {
 binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
 
 
+
+// EVERYTHING BE TRUE
+//Check if the predicate (second argument) 
+//is truthy on all elements of a collection (first argument).
+//Remember, you can access object properties through 
+//either dot notation or [] notation.
+
+function every(collection, pre) {
+  var bool = true;
+  for (var i = 0; i < collection.length; i++){
+     if (!((pre in collection[i]) && collection[i][pre])) bool = false;
+  }
+  return bool;
+}
+
+every([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+
+every([{"user": "Tinky-Winky", "sex": "male", "age": 0}, {"user": "Dipsy", "sex": "male", "age": 3}, {"user": "Laa-Laa", "sex": "female", "age": 5}, {"user": "Po", "sex": "female", "age": 4}], "age");
+
+
