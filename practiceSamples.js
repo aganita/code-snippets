@@ -97,3 +97,61 @@ function solution(A) {
 }
 
  solution([1, 4, -4]);
+
+
+
+
+// get the sum of all elements of multidimentional array
+function sumArrayElements(arr) {
+    var sum = 0;
+    for (var i = 0; i < arr.length; i++){
+        if (!Array.isArray(arr[i])) sum += arr[i];
+        else sum += sumArrayElements(arr[i]);
+    }
+    return sum;
+} 
+
+sumArrayElements([1, [2, [3, 4]], [5, 6]]) // 21
+
+
+
+
+
+// write liftoff with recursion
+function liftoff(n) {
+    if (n === 0) console.log("loftoff!");
+    else {
+        console.log(n);
+        return liftoff(n-1); // make sure have return otherwise console.log('suprise! n = ', n); will also be executed
+    }  
+    console.log('suprise! n = ', n);
+} 
+
+liftoff(3)
+//3
+//2
+//1
+//liftoff!
+
+
+
+
+// return true if exists a pair in the first argument sum of which equals the second argument
+// otherwise return false
+function pairSum (arr, sum){
+    var tempSum = 0;
+    var leftP = 0, rightP = arr.length -1;
+    while ( leftP !== rightP ){
+        tempSum = arr[leftP] + arr[rightP];
+        if (tempSum > sum) rightP -= 1;
+        else if (tempSum < sum) leftP += 1;
+        else return true; 
+    }
+    return false;
+}
+
+console.log( pairSum( [3, 4, 6, 8, 9, 11], 14) ); // true
+console.log( pairSum( [3, 4, 6, 8, 9, 11], 8) );  // false (4 can't be used twice)
+console.log( pairSum( [3, 4, 4, 8, 9, 11], 8) );  // true (two diff. elements)
+console.log( pairSum( [3, 4, 6, 8, 9, 11], 16) ); // false
+console.log( pairSum( [3, 4, 6, 8, 9, 11], 20) ); // true
