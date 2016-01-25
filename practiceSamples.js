@@ -102,6 +102,7 @@ function solution(A) {
 
 
 // get the sum of all elements of multidimentional array
+// (Grace Hopper Academy)
 function sumArrayElements(arr) {
     var sum = 0;
     for (var i = 0; i < arr.length; i++){
@@ -118,6 +119,7 @@ sumArrayElements([1, [2, [3, 4]], [5, 6]]) // 21
 
 
 // write liftoff with recursion
+//(Grace Hopper Academy)
 function liftoff(n) {
     if (n === 0) console.log("loftoff!");
     else {
@@ -138,6 +140,7 @@ liftoff(3)
 
 // return true if exists a pair in the first argument sum of which equals the second argument
 // otherwise return false
+// (Grace Hopper Academy)
 function pairSum (arr, sum){
     var tempSum = 0;
     var leftP = 0, rightP = arr.length -1;
@@ -155,3 +158,34 @@ console.log( pairSum( [3, 4, 6, 8, 9, 11], 8) );  // false (4 can't be used twic
 console.log( pairSum( [3, 4, 4, 8, 9, 11], 8) );  // true (two diff. elements)
 console.log( pairSum( [3, 4, 6, 8, 9, 11], 16) ); // false
 console.log( pairSum( [3, 4, 6, 8, 9, 11], 20) ); // true
+
+
+
+// find the max difference where the higher indexed element is larger than lower indexed one
+// (One Zero Capital)
+function maxDifference(a) {
+    // return -1 if the given argument is not an array
+    if (!Array.isArray(a) || a.length <= 1 ) return -1;
+    
+    // define the variables
+    var max = a[a.length - 1];
+    var tempDiff = a[a.length - 1] - a[a.length - 2];
+    var result = tempDiff;
+    
+    // loop through the end of the array
+    for (var i = a.length - 2 ; i >0; i--) {
+        // use temp variable to store the max array element 
+        max = Math.max(a[i], max);
+        // find the difference between max and the element one below of given array
+        tempDiff = max - a[i-1];
+        // save in result the maximum difference
+        result = Math.max(result, tempDiff);
+    }
+    // if the result is negative then return -1 which means there is no pair that satisfies the requirement
+    if (result < 0) return -1;
+    
+    return result;
+}
+
+console.log (maxDifference([2,3,10,2,4,8,1]));
+console.log(maxDifference([3,1, 0]));
