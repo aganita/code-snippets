@@ -37,3 +37,19 @@ try {
     throw e;
   }
 }
+
+
+// Web services that help catching client side errors https://errorception.com/ or http://www.muscula.com/
+// they use window.onerror. somwthing like: 
+<script>
+  window.onerror = function(message, url, lineNumber) {
+    alert("Error that was not caught by functions \n" +
+      "Message: " + message + "\n(" + url + ":" + lineNumber + ")");
+  };
+
+  function readData() {
+    error(); // ooops something is wrong
+  }
+
+  readData();
+</script>
