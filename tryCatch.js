@@ -21,7 +21,10 @@ function readData() {
     } else {
       throw e; // пробрасываем
     }
+  } finally {
+    alert("end of readData function");
   }
+
 }
 
 try {
