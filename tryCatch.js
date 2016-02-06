@@ -1,3 +1,6 @@
+// https://learn.javascript.ru/exception
+// credit to Ilya Kantor
+
 function ReadError(message, cause) {
   this.message = message;
   this.cause = cause;

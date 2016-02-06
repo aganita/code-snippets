@@ -1,4 +1,6 @@
 // Access to the oject properties from within
+// https://learn.javascript.ru/internal-external-interface
+// credit to Ilya Kantor
 
 // Solution #1 
 
