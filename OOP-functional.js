@@ -129,7 +129,7 @@ alert( coffeeMachine.waterAmount() ); // 450
 
 // inheritance
 function Machine(power) {
-  this._power = power; // (1)
+  this._power = power; // 
 
   this._enabled = false;
 
