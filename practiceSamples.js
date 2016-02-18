@@ -189,3 +189,30 @@ function maxDifference(a) {
 
 console.log (maxDifference([2,3,10,2,4,8,1]));
 console.log(maxDifference([3,1, 0]));
+
+
+
+// show the hyphenated array elements 
+
+// solution # 1
+function showList() {
+    var arr = [];
+    for (var i = 0; i< arguments.length; i++) {
+        arr.push(arguments[i]);
+    }
+  alert( arr.join(" - ") );
+}
+
+// solution # 2
+function showList() {
+  alert( [].join.call(arguments, " - ") );
+}
+
+// solution # 3
+function showList() {
+  alert( Array.prototype.join.call(arguments, " - ") ); // avoid creating an obj []
+}
+
+
+showList("Live", "Love", "Laugh"); // Live - Love - Laugh
+
