@@ -2,7 +2,9 @@
 
 class Stack{
     constructor(size){
-        this.size = size;
+        if (typeof size !== "number")
+            size = 0;
+        this.size = size || 0;
         this.stack = [];
     }
     
@@ -10,7 +12,7 @@ class Stack{
         return (this.isFull() ? "Stack is Full!" : Boolean(this.stack.push(node)));
     }
     pop(){
-        return (this.isEmpty()? "Stack is Empty" : Boolean(this.stack.pop()));
+        return (this.isEmpty() ? "Stack is Empty" : Boolean(this.stack.pop()));
     }
     
     isEmpty(){
@@ -25,13 +27,14 @@ class Stack{
     }
     
     print(){
-        return Array.prototype.join.call(this.stack.reverse(), "\n");
+        console.log(Array.prototype.join.call(this.stack.reverse(), "\n"));
     }
-    
+
 }
 
 
-var myStack = new Stack(2);
-myStack.push(3);
-myStack.push(4)
-console.log(myStack.print());
+var myStack = new Stack(6);
+myStack.push("3");
+myStack.push(4);
+myStack.push(5);
+myStack.print();onsole.log(myStack.print());
