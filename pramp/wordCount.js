@@ -2,7 +2,7 @@
 
 // solution #1
 function wordCount(str){
-	str = str.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+	str = str.replace(/\W+/g, ' ').trim();
 	let wordArr = str.split(" ");
 	
 	let countMap = {};
