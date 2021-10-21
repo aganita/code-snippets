@@ -1,2 +1,1 @@
-# 
-Collection of random code snippets and templates
+### Collection of random code snippets and templates
