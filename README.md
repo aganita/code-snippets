@@ -1,2 +1,2 @@
-# JavaScript-snippets
-Collection of random code snippets and algos
+# 
+Collection of random code snippets and templates

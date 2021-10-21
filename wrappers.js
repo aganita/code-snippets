@@ -41,9 +41,6 @@ alert( fibonacci(20) ); // 6765
 alert( timers.fibo + 'msec' );
 
 
-
-
-
 // ------------- logging wrapper ------------- 
 function work(a, b) {
   alert( a + b ); 
@@ -69,8 +66,6 @@ for (var i = 0; i < log.length; i++) {
   var args = log[i]; // array or arguments on i call
   alert( 'Log:' + args.join() ); // "Log:1,2", "Log:4,5"
 }
-
-
 
 
 // ------------- check the type wrapper ------------- 
