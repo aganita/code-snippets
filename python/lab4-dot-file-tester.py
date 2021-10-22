@@ -9,7 +9,7 @@ Usage: python3 lab4-dot-file-tester.py original-file.dot your-version.dot
 __author__ = "Ani Agajanyan"
 __copyright__ = "Copyright 2021, Ani Agajanyan"
 __license__ = "MIT License"
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 __maintainer__ = "Ani Agajanyan"
 
 import sys
@@ -35,7 +35,8 @@ def read_file(file_path):
     
     for line in lines_raw:
         line = line.strip('\n\t').lstrip().rstrip()
-        lines.append(line)
+        if (not line.startswith('//')):
+            lines.append(line)
 
     return lines[1:-1]
 
@@ -99,21 +100,37 @@ def parse_second_part(lines):
 
 def compare_first_part(original, student):
     print(f'{bcolors.CYAN}Comparing the first part of the .dot files{bcolors.ENDC}')
+    
     is_match = True
-    if (len(original) > len(student)):
+    addresses_original = []
+    addresses_student = []
+    original_dict = {}
+    student_dict = {}
+
+    for elm in original:
+        addresses_original.append(elm[1])
+        original_dict[elm[1]] = [elm[0], elm[2]]
+
+    for elm in student:
+        addresses_student.append(elm[1])
+        student_dict[elm[1]] = [elm[0], elm[2]]
+
+    if (set(addresses_original) ^ set(addresses_student)):
         is_match = False
-        print(f'{bcolors.RED}There are missing nodes in your version{bcolors.ENDC}')
-    elif (len(original) < len(student)):
-        is_match = False        
-        print(f'{bcolors.RED}You have more nodes than the original version{bcolors.ENDC}')
-    else:
-        for i in range(0, len(original)):
-            original[i][2].sort()
-            student[i][2].sort()
-            if (original[i][2] != student[i][2]):
-                is_match = False
-                print(f' {bcolors.GREEN}TA\'s version: {original[i][0]}, address:{original[i][1]}, DD: {original[i][2]}{bcolors.ENDC}')
-                print(f' {bcolors.RED}Your version: {student[i][0]}, address:{student[i][1]}, DD: {student[i][2]}{bcolors.ENDC}\n')
+        if (set(addresses_original) - set(addresses_student)):
+            print(f' Missing addresses in your version: {bcolors.RED}{set(addresses_original) - set(addresses_student)}{bcolors.ENDC}')
+        if (set(addresses_student) - set(addresses_original)):
+            print(f' Extra addresses found in your version: {bcolors.RED}{set(addresses_student) - set(addresses_original)}{bcolors.ENDC}')
+        print(f' Full list of mismatched addresses between two versions: {bcolors.RED}{set(addresses_original) ^ set(addresses_student)}{bcolors.ENDC}')
+    
+    for key in original_dict:
+        original_dict[key][1].sort()
+        student_dict[key][1].sort()
+
+        if (original_dict[key][1] != student_dict[key][1]):
+            is_match = False
+            print(f' {bcolors.GREEN}TA\'s version: {original_dict[key][0]}, address:{key}, DD: {original_dict[key][1]}{bcolors.ENDC}')
+            print(f' {bcolors.RED}Your version: {student_dict[key][0]}, address:{key}, DD: {student_dict[key][1]}{bcolors.ENDC}\n')
 
     if (is_match):
         print(f'{bcolors.GREEN}Congrats! First part of .dot file is a perfect match!{bcolors.ENDC}')
@@ -139,6 +156,11 @@ def compare_second_part(original, student):
     return
 
 
+def remove_comments(lines):
+    #TODO: remove endline comments
+    return 
+
+
 def main(argv):
     if (len(argv) != 2):
         print('f{bcolors.YELLOW}Enter two .dot files to compare{bcolors.ENDC}')
@@ -146,9 +168,12 @@ def main(argv):
     
     file_TA_version = sys.argv[1]
     file_student_version = sys.argv[2]
-    
+
     lines_TA_version = read_file(file_TA_version)
     lines_student_version = read_file(file_student_version)
+
+    # lines_TA_version = remove_comments(lines_TA_version)
+    # lines_student_version = remove_comments(lines_student_version)
 
     firt_part_TA_version = parse_first_part(lines_TA_version)
     firt_part_student_version = parse_first_part(lines_student_version)
