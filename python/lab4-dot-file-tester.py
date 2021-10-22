@@ -2,7 +2,8 @@
 
 """
 Georgia Tech CS-6747 - Advanced Malware Analysis - Lab4
-Compare two dot files and print out mismatches
+Compare two .dot files and print out mismatches.
+Usage: python3 lab4-dot-file-tester.py original-file.dot your-version.dot
 """
 
 __author__ = "Ani Agajanyan"
@@ -12,6 +13,18 @@ __version__ = "1.0.0"
 __maintainer__ = "Ani Agajanyan"
 
 import sys
+
+class bcolors:
+    HEADER = '\033[95m'
+    BLUE = '\033[94m'
+    CYAN = '\033[96m'
+    GREEN = '\033[92m'
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+    ENDC = '\033[0m'
+
 
 def read_file(file_path):
     lines_raw = []
@@ -59,7 +72,6 @@ def parse_first_part(lines):
         node_data.append(node_dd.split(','))
 
         parsed_nodes.append(node_data)
-        print(node_data)
 
     return parsed_nodes  
 
@@ -80,22 +92,56 @@ def parse_second_part(lines):
         current_line_elements = lines[i].split('->')
         current_line_elements[0] = current_line_elements[0].strip()
         current_line_elements[1] = current_line_elements[1].strip()
-        parsed_flow.append(current_line_elements)
+        parsed_flow.append(f'{current_line_elements[0]}->{current_line_elements[1]}')
 
     return parsed_flow
 
 
 def compare_first_part(original, student):
-    
-    print('')
+    print(f'{bcolors.CYAN}Comparing the first part of the .dot files{bcolors.ENDC}')
+    is_match = True
+    if (len(original) > len(student)):
+        is_match = False
+        print(f'{bcolors.RED}There are missing nodes in your version{bcolors.ENDC}')
+    elif (len(original) < len(student)):
+        is_match = False        
+        print(f'{bcolors.RED}You have more nodes than the original version{bcolors.ENDC}')
+    else:
+        for i in range(0, len(original)):
+            original[i][2].sort()
+            student[i][2].sort()
+            if (original[i][2] != student[i][2]):
+                is_match = False
+                print(f' {bcolors.GREEN}TA\'s version: {original[i][0]}, address:{original[i][1]}, DD: {original[i][2]}{bcolors.ENDC}')
+                print(f' {bcolors.RED}Your version: {student[i][0]}, address:{student[i][1]}, DD: {student[i][2]}{bcolors.ENDC}\n')
+
+    if (is_match):
+        print(f'{bcolors.GREEN}Congrats! First part of .dot file is a perfect match!{bcolors.ENDC}')
+
+    return
+
 
 def compare_second_part(original, student):
+    print(f'\n{bcolors.CYAN}Comparing the second part of the .dot files{bcolors.ENDC}')        
+    is_match = True
+
+    if (set(original) ^ set(student)):
+        is_match = False
+        if (set(original) - set(student)):
+            print(f' Missing nodes in your version: {bcolors.RED}{set(original) - set(student)}{bcolors.ENDC}')
+        if (set(student) - set(original)):
+            print(f' Extra nodes found in your version: {bcolors.RED}{set(student) - set(original)}{bcolors.ENDC}')
+        print(f' Full list of mismatched nodes between two versions: {bcolors.RED}{set(original) ^ set(student)}{bcolors.ENDC}')
     
-    print('')
+    if (is_match):
+        print(f'{bcolors.GREEN}Congrats! Second part of .dot file is a perfect match!{bcolors.ENDC}')
+
+    return
+
 
 def main(argv):
     if (len(argv) != 2):
-        print('Enter two .dot files to compare')
+        print('f{bcolors.YELLOW}Enter two .dot files to compare{bcolors.ENDC}')
         return
     
     file_TA_version = sys.argv[1]
@@ -111,7 +157,7 @@ def main(argv):
     second_part_student_version = parse_second_part(lines_student_version)
 
     compare_first_part(firt_part_TA_version, firt_part_student_version)
-    # compare_second_part(second_part_TA_version, second_part_student_version)
+    compare_second_part(second_part_TA_version, second_part_student_version)
 
 
 if __name__ == "__main__":
