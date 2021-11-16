@@ -29,12 +29,14 @@ class bcolors:
 def read_file(file_path):
     lines_raw = []
     lines = []
-    
+
     with open(file_path) as f:
         lines_raw = f.readlines()
-    
+
     for line in lines_raw:
         line = line.strip('\n\t').lstrip().rstrip()
+        if line.endswith(";"):
+            line = line.rstrip(";")
         if (not line.startswith('//')):
             lines.append(line)
 
